@@ -1,3 +1,13 @@
+// Напиши скрипт, який для кожного елемента 
+// масиву ingredients:
+// Створить окремий елемент <li>. 
+// Обов'язково використовуй метод document.createElement().
+// Додасть назву інгредієнта як його 
+// текстовий вміст.
+// Додасть елементу клас item.
+// Після чого, вставить усі <li> за 
+// одну операцію у список ul.ingredients.
+
 const ingredients = [
   'Potatoes',
   'Mushrooms',
@@ -6,32 +16,17 @@ const ingredients = [
   'Herbs',
   'Condiments',
 ];
-const title = document.querySelector("#ingredients");
-title.textContent = 'Ingredients';
-document.body.append(title);
-console.log(title);
-document.body.appendChild(title);
 
-const listItem = document.createElement("li");
-listItem.classList.add("item");
-listItem.textContent = 'Potatoes';
-console.log(listItem);
-title.appendChild(listItem);
+const ingredientsList = document.querySelector("#ingredients");
 
+const makeIngredientsList = elements => {
+  return elements.map(element => {
+    const listItem = document.createElement("li");
+    listItem.classList.add("item");
+    listItem.textContent = element;
 
-
-
-
-
-
-
-// Напиши скрипт, який для кожного елемента 
-// масиву ingredients:
-
-// Створить окремий елемент <li>. 
-// Обов'язково використовуй метод document.createElement().
-// Додасть назву інгредієнта як його 
-// текстовий вміст.
-// Додасть елементу клас item.
-// Після чого, вставить усі <li> за 
-// одну операцію у список ul.ingredients.
+  return listItem;
+});
+}
+const elements = makeIngredientsList(ingredients);
+ingredientsList.append(...elements);
