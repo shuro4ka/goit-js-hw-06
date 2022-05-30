@@ -26,10 +26,30 @@
 // Виведи об'єкт із введеними даними в консоль і 
 // очисти значення полів форми методом reset.
 
-const formRef = document.querySelector(".login-form");
-console.log(formRef);
+const form = document.querySelector(".login-form");
 
-formRef.addEventListener('submit', (event) => {
+
+form.addEventListener('submit', onFormSubmit);
+
+function onFormSubmit(event) {
     event.preventDefault();
-})
+    const formData = new FormData(event.currentTarget);
+   // formData.forEach((value, name) => {
+        if(formData.textContent.replace(/\s/g, '') === '') {
+       // console.log(`onFormSubmit -> ${name}: ${value}`);
+        window.alert("Empty Field!");
+    };
+}
+    // const formElements = event.currentTarget.elements;  
+    // console.dir(formElements);
 
+    // const email = formElements.email.value;
+    // const password = formElements.password.value;
+
+    // spanRef.textContent = event.target.value;
+    // if(spanRef.textContent.replace(/\s/g, '') === '') {
+    //     window.alert("Empty Field!");
+    
+  
+
+    
