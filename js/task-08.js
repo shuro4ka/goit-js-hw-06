@@ -1,6 +1,4 @@
-
 // Напиши скрипт управління формою логіна.
-
 // <form class="login-form">
 //   <label>
 //     Email
@@ -21,35 +19,30 @@
 // Якщо користувач заповнив усі поля і відправив форму, 
 // збери значення полів в об'єкт, де ім'я поля буде 
 // ім'ям властивості, а значення поля - значенням властивості.
-//  Для доступу до елементів форми використовуй 
-//  властивість elements.
+// Для доступу до елементів форми використовуй 
+// властивість elements.
 // Виведи об'єкт із введеними даними в консоль і 
 // очисти значення полів форми методом reset.
 
 const form = document.querySelector(".login-form");
 
-
 form.addEventListener('submit', onFormSubmit);
 
 function onFormSubmit(event) {
     event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-   // formData.forEach((value, name) => {
-        if(formData.textContent.replace(/\s/g, '') === '') {
-       // console.log(`onFormSubmit -> ${name}: ${value}`);
-        window.alert("Empty Field!");
-    };
+    const {
+        elements: { email, password }
+    } = event.currentTarget;
+
+    if(email.value === "" || password.value === "") {
+        window.alert("Please fill in all the fields!");
+    }
+
+    const DataObject = {
+        email: email.value,
+        password: password.value
+    }
+
+    console.log(DataObject);
+    event.currentTarget.reset();
 }
-    // const formElements = event.currentTarget.elements;  
-    // console.dir(formElements);
-
-    // const email = formElements.email.value;
-    // const password = formElements.password.value;
-
-    // spanRef.textContent = event.target.value;
-    // if(spanRef.textContent.replace(/\s/g, '') === '') {
-    //     window.alert("Empty Field!");
-    
-  
-
-    
