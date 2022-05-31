@@ -25,13 +25,17 @@
 // }
 
 const inputRef = document.querySelector("#validation-input");
-const maxValue = inputRef.dataset.length;
+const maxLenght = inputRef.dataset.length;
 
 inputRef.addEventListener('blur', (event) => {
     const inputValue = event.target.value;
-        if(inputValue.length > maxValue) {
-            inputRef.classList.add("invalid");
-        } else {
-            inputRef.classList.add("valid");
-        }
+    if(inputValue.length > maxLenght) {
+        // inputRef.className = "invalid";
+        inputRef.classList.remove('valid');
+        inputRef.classList.add('invalid');
+    } else {
+        // inputRef.className = "valid";
+        inputRef.classList.remove('invalid');
+        inputRef.classList.add('valid');
+    }
 })
